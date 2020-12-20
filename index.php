@@ -2,20 +2,8 @@
 	
 	require_once 'core/init.php';
 
-	$user = DB::getInstance();
-
-	// $test = $user->query("SELECT * FROM users");
+	$user = DB::getInstance()->query("SELECT * FROM users", ['name_ar', '=', 'احذية']);
 
 	echo"<pre>";
-		print_r($user->_pdo);
+		print_r($user);
 	echo"</pre>";
-
-
-
-
-
-
-
-
-
-	echo "test";
