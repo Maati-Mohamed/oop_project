@@ -1,5 +1,9 @@
-<?php
-	
-	require_once 'core/init.php';
+<?php	
+require_once 'core/init.php';
+$user = DB::getInstance()->insert('users',array(
 
-DB::getInstance()->query("SELECT username FROM users WHERE username =?", array('Alex'));
+	'username' => 'Dale',
+	'password' => 'password',
+	'salt' => 'salt' 
+));
+
