@@ -1,5 +1,6 @@
 <?php	
 require_once 'core/init.php';
+sql
 
 	if (Session::exsits('home')) {
 		echo '<p>'.Session::flash('home').'</p>';
@@ -37,9 +38,11 @@ require_once 'core/init.php';
 	echo "You need to <a href='login.php'>Login</a> or <a href='register.php'>Register</a>";
 }
 
+main
 $user = DB::getInstance()->insert('users',array(
 
 	'username' => 'Dale',
 	'password' => 'password',
 	'salt' => 'salt' 
 ));
+
