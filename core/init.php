@@ -16,7 +16,8 @@
 		),
 
 		'session' => array(
-			'session_name'  => 'user'
+			'session_name'  => 'user',
+			'token_name' => 'token'
 		)
 
 	);
@@ -25,5 +26,15 @@
 		});
 
 			require_once 'functions/sanitize.php';
+
+if (Cookie::exsits(Config::get('remeber/cookie_name')) && !Session::exsits(Config::get('session/session_name'))) {
+	$hash = Cookie::get(Config::get('remeber/cookie_name'));
+	$hashCheck = DB::getInstance()->get('users_session',array('hash','=',$hash));
+
+	if ($hashCheck->count()) {
+		$user = new User($hashCheck->first()->users_id);
+		$user->login();
+	}
+}
 
 			
